@@ -1,6 +1,7 @@
 package marketanalyzer;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -26,9 +27,11 @@ public class SteamMarketAnalyzerServlet extends HttpServlet {
 		response.setContentType("text/plain");
 
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		ArrayList<MarketHistoryJDO> marketHistoryItems = new ArrayList<MarketHistoryJDO>();
 		
 		Query q = pm.newQuery(MarketHistoryJDO.class);
+		
+		@SuppressWarnings("unchecked")
+		Collection<MarketHistoryJDO> marketHistoryItems = (Collection<MarketHistoryJDO>) q.execute();
 		
 		for (MarketHistoryJDO history : marketHistoryItems){
 			double average = history.averagePrice();

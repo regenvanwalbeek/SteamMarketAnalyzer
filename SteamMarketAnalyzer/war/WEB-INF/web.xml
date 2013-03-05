@@ -36,7 +36,26 @@
 		<servlet-name>MarketCrawlerCron</servlet-name>
 		<url-pattern>/cron/crawlmarket</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- Configure mailing -->
+	<servlet>
+		<servlet-name>mailhandler</servlet-name>
+		<servlet-class>mail.MailHandlerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mailhandler</servlet-name>
+		<url-pattern>/_ah/mail</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/_ah/mail/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	
 	<!-- Other stuff -->
 	 
 	<welcome-file-list>

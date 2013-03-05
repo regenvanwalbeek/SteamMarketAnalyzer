@@ -76,6 +76,7 @@ public class CrawlMarketServlet extends HttpServlet {
 		}
 
 		pm.close();
-
+		
+		SteamMarketAnalyzerEmailer.sendEmails();
 	}
 }
