@@ -64,17 +64,24 @@ public class InitializeItemSearchServlet extends HttpServlet {
 		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Stockbroker%27s%20Scarf"); // stockbroker's
 																										// scarf
 
-		// genuines
-		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20AWPer%20Hand"); // AWPer
-																							// hand
-		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Distinguished%20Rogue"); // genuine
-																									// Distinguished
-																									// rogue
-		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Foppish%20Physician"); // genuine
-																									// foppish
-																									// physician
-		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Pip-Boy"); // genuine
-																						// pip-boy
+		/** GENUINES **/
+		// Anger
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Anger");
+		// AWP-er Hand
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20AWPer%20Hand");
+		// Distinguished Rogue
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Distinguished%20Rogue");
+		// Foppish Physician
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Foppish%20Physician");
+		// Pip-boy
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Pip-Boy");
+		// Menpo
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Menpo");
+		// Companion Cube Pin
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Companion%20Cube%20Pin");
+		// Diamondback
+		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Diamondback");
+		
 		return urls;
 	}
 

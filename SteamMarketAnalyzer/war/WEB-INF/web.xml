@@ -17,6 +17,15 @@
 		<servlet-name>InitializeItemSearchServlet</servlet-name>
 		<url-pattern>/initialize</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EmailTester</servlet-name>
+		<servlet-class>marketanalyzer.SendEmailTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmailTester</servlet-name>
+		<url-pattern>/testemail</url-pattern>
+	</servlet-mapping>
 
 	<!-- Cron jobs -->
 	<security-constraint>

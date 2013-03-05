@@ -46,14 +46,13 @@ public class SteamMarketAnalyzerEmailer {
 		pm.close();
 
 		// Send the email
-		Properties props = new Properties();
-		Session session = Session.getDefaultInstance(props, null);
-
 		if (!messageBody.equals("")) {
 			try {
+				Properties props = new Properties();
+				Session session = Session.getDefaultInstance(props, null);
 				Message message = new MimeMessage(session);
 
-				message.setFrom(new InternetAddress("testemail@steammarketanalyzer.appspot.com",
+				message.setFrom(new InternetAddress("analyzer@steammarketanalyzer.appspotmail.com",
 						"Steam Market Analyzer"));
 				InternetAddress[] recipients = {
 						new InternetAddress("regenvanwalbeek@gmail.com",
