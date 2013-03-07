@@ -58,12 +58,37 @@ public class InitializeItemSearchServlet extends HttpServlet {
 
 		ArrayList<String> urls = new ArrayList<String>();
 
-		// vintages
-		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Crit-a-Cola"); // crit-a-cola
-		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Gunslinger"); // gunslinger
-		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Stockbroker%27s%20Scarf"); // stockbroker's
-																										// scarf
-
+		/**VINTAGES**/
+		//Crit-a-Cola
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Crit-a-Cola");
+		//Gunslinger
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Gunslinger");
+		//Stockbroker's Scarf
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Stockbroker%27s%20Scarf");
+		//backburner																								
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Backburner");
+		//sandvich
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Sandvich");
+		//KGB
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Killing%20Gloves%20of%20Boxing");
+		//Frontier Justice
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Frontier%20Justice");
+		//Direct Hit
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Direct%20Hit");
+		//Pain Train
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Pain%20Train");
+		//Scotsman Skullcutter
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Scotsman%27s%20Skullcutter");	
+		//Gunboats
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Gunboats");
+		// Dalokohs Bar
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Dalokohs%20Bar");
+		//Wrangler
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Wrangler");
+		//Southern Hospitality
+		urls.add("http://steamcommunity.com/market/listings/440/Vintage%20Southern%20Hospitality");
+		
+		
 		/** GENUINES **/
 		// Anger
 		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Anger");
@@ -81,6 +106,25 @@ public class InitializeItemSearchServlet extends HttpServlet {
 		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Companion%20Cube%20Pin");
 		// Diamondback
 		urls.add("http://steamcommunity.com/market/listings/440/Genuine%20Diamondback");
+		
+		
+		/**FESTIVES**/
+		//Axtinguisher
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Axtinguisher");
+		//Ubersaw
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Ubersaw");
+		//Frontier Justice
+		urls.add("http://steamcommunity.com/market/listings/440/Festive%20Frontier%20Justice");
+		//Holy Mackerel
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Holy%20Mackerel");
+		//Grenade Launcher
+		urls.add("http://steamcommunity.com/market/listings/440/Festive%20Grenade%20Launcher");
+		//Ambassador
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Ambassador");
+		//Huntsman
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Huntsman");
+		//sandvich
+		urls.add("http://steamcommunity.com/market/listings/440/The%20Festive%20Sandvich");
 		
 		return urls;
 	}
