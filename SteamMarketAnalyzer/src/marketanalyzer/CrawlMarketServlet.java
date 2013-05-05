@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.servlet.http.HttpServlet;
@@ -19,64 +20,49 @@ import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+
 public class CrawlMarketServlet extends HttpServlet {
 
 	// TODO this will need to be a longer task
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-
-		// Get all the market history items
-		Query q = pm.newQuery(MarketHistoryJDO.class);
-		List<MarketHistoryJDO> results = (List<MarketHistoryJDO>) q.execute();
-		ArrayList<MarketHistoryJDO> marketHistories = new ArrayList<MarketHistoryJDO>();
-
-		// Create the scraper object
-		CleanerProperties props = new CleanerProperties();
-		props.setTranslateSpecialEntities(true);
-		props.setTransResCharsToNCR(true);
-		props.setOmitComments(true);
-
-		// scrape each url to gather the current market on each item
-		for (MarketHistoryJDO marketHistory : results) {
-			try {
-				TagNode rootNode = new HtmlCleaner(props).clean(new URL(marketHistory
-						.getUrl()));
-
-				List priceTags = rootNode.getElementListByAttValue("class",
-						"market_listing_price market_listing_price_with_fee",
-						true, false);
-
-				// Get the one with the lowest USD. Wow exchange rates are dumb.
-				// This should be fixed if valve does an api TODO
-				String lowestPrice = null;
-				for (int i = 0; i < priceTags.size(); i++) {
-					TagNode priceTag = (TagNode) priceTags.get(i);
-					String price = priceTag.getText().toString().trim();
-
-					if (price.contains("&#36;")) {
-						lowestPrice = price;
-						break;
-					}
+		// Scrape the steam market prices.
+		List<SteamMarketListing> listings = new ArrayList<SteamMarketListing>();
+		try {
+			int itemCount = SteamMarketUtility.getItemCount();
+			for (int i = 0; i < itemCount; i += 100) {
+				List<SteamMarketListing> newListings = SteamMarketUtility
+						.getSteamMarketListings(i, 100);
+				for (int j = 0; j < newListings.size(); j++) {
+					listings.add(newListings.get(j));
 				}
-
-				lowestPrice = lowestPrice.substring(5);
-				marketHistory.addPrice(Double.parseDouble(lowestPrice));
-
-				// store the adjusted market history objects
-				pm.makePersistent(marketHistory);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			return;
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+			return;
+		}
+		
+		// Set the new prices in the history.
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		for (int i = 0; i < listings.size(); i++) {
+			MarketHistoryJDO history;
+			try {
+				history = (MarketHistoryJDO) pm.getObjectById(listings.get(i)
+						.getLink());
+			} catch (JDOObjectNotFoundException e) {
+				history = new MarketHistoryJDO(listings.get(i).getLink());
+			}
+			history.addPrice(listings.get(i).getStartingPrice());
+			pm.makePersistent(history);
 		}
 
 		pm.close();
-		
+
 		SteamMarketAnalyzerEmailer.sendEmails();
 	}
 }
