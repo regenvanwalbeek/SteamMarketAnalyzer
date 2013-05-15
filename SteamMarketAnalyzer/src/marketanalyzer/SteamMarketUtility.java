@@ -106,7 +106,7 @@ public class SteamMarketUtility {
 					.getText().toString();
 			
 			// Parse link
-			String link = ((TagNode) linkNodes.get(i))
+			String link = ((TagNode) linkNodes.get(i * 4))
 					.getAttributeByName("href");
 			
 			// Parse starting price
