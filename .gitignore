@@ -3,3 +3,7 @@
 # Package Files #
 *.war
 *.ear
+
+
+# Generated Files
+local_db.bin
