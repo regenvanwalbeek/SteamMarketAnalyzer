@@ -52,7 +52,7 @@ public class CrawlMarketServlet extends HttpServlet {
 		for (int i = 0; i < listings.size(); i++) {
 			MarketHistoryJDO history;
 			try {
-				history = (MarketHistoryJDO) pm.getObjectById(listings.get(i)
+				history = (MarketHistoryJDO) pm.getObjectById(MarketHistoryJDO.class, listings.get(i)
 						.getLink());
 			} catch (JDOObjectNotFoundException e) {
 				history = new MarketHistoryJDO(listings.get(i).getLink());
