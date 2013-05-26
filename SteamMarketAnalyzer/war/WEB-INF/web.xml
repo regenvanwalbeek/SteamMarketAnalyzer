@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!-- Page Servlets -->
+	<servlet>
+		<servlet-name>HomePageServlet</servlet-name>
+		<servlet-class>page.HomePageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomePageServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UnderMarketPageServlet</servlet-name>
+		<servlet-class>page.UnderMarketPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UnderMarketPageServlet</servlet-name>
+		<url-pattern>/undermarket</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	<servlet>
 		<servlet-name>SteamMarketAnalyzer</servlet-name>
 		<servlet-class>marketanalyzer.SteamMarketAnalyzerServlet
@@ -66,11 +88,7 @@
 	
 	
 	<!-- Other stuff -->
-	 
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
-	
+
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>
 		<servlet-class>com.google.api.server.spi.SystemServiceServlet
