@@ -1,7 +1,3 @@
-<%@ page import="com.google.appengine.api.users.User"%>
-<%@ page import="com.google.appengine.api.users.UserService"%>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,7 +8,7 @@
 		<meta name="author" content="">
 
 		<!-- Styles -->
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<style type="text/css">
 			body {
 				padding-top: 60px;
@@ -31,68 +27,26 @@
 				}
 		  	}
 		</style>
-		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-		  <script src="../assets/js/html5shiv.js"></script>
-		<![endif]-->
-		
-		<!-- Fav and touch icons -->
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-		<link rel="shortcut icon" href="../assets/ico/favicon.png">
+		<!-- Scripts -->
+		<script type="text/javascript" src="js/jquery-2.0.1.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/sma_util.js" ></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				highlight_sidebar("home_link");
+			});
+		</script>
 	</head>
 
 	<body>
-
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="brand" href="/">Steam Market Analyzer</a>
-					<div class="nav-collapse collapse">
-						<%
-						UserService userService = UserServiceFactory.getUserService();
-						User user = userService.getCurrentUser();
-						if (user == null){
-							%><p class="navbar-text pull-right"><a href="#" class="navbar-link">Log in</a></p><%
-						} else {
-							%><p class="navbar-text pull-right">Logged in as ${fn:escapeXml(user.email)} | <a href="#" class="navbar-link">Logout</a></p><%
-						}
-						%>
-						<ul class="nav">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#contact">Contact</a></li>
-						</ul>
-					</div><!--/.nav-collapse -->
-		    	</div>
-			</div>
-		</div>
-
+		<jsp:include page="navbar.jsp"/>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span3">
-					<div class="well sidebar-nav">
-						<ul class="nav nav-list">
-							<li class="nav-header">Cheap Items</li>
-							<li class="active"><a href="undermarket">Under Market</a></li>
-							<li><a href="#">Under Price</a></li>
-							<li class="nav-header">Resources</li>
-							<li><a href="#">TF2 Spreadsheet</a></li>
-							<li><a href="#">TF2 Outpost</a></li>
-							<li class="nav-header">My Account</li>
-							<li><a href="#">Settings</a></li>
-						</ul>
-					</div><!--/.well -->
-				</div><!--/span-->
+					<jsp:include page="sidebar.jsp" />
+				</div>
 				<div class="span9">
 					<div class="hero-unit">
 					<h1>Welcome to SMA!</h1>
@@ -143,9 +97,6 @@
 		</footer>
 
 		</div><!--/.fluid-container-->
-
-		<!-- Scripts -->
-		<script type="text/javascript" src="js/jquery-2.0.1.min.js"></script>
-		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		
 	</body>
 </html>

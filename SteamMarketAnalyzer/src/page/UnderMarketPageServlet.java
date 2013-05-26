@@ -15,7 +15,7 @@ public class UnderMarketPageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		if (!Authenticator.isAuthenticated()){
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			response.sendRedirect("/");
 			return;
 		}
 		
