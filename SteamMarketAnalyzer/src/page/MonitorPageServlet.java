@@ -73,9 +73,8 @@ public class MonitorPageServlet extends HttpServlet {
 			} catch (JDOObjectNotFoundException e) {
 				// Item not found - listed since last crawl. Just wait for the item to be crawled.
 			}
-			
-			response.getWriter().write(messageBody);
 		}
+		response.getWriter().write(messageBody);
 
 		pm.close();
 	}
