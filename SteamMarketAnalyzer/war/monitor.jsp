@@ -36,7 +36,18 @@
 		<!-- Scripts -->
 		<script type="text/javascript" src="js/jquery-2.0.1.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/sma_util.js"></script>
+		<script type="text/javascript" src="js/sma_util.js" ></script>
+		<script type="text/javascript">
+			// Update the UI
+			$(document).ready(function(){
+				highlight_link("monitor_link");
+			});
+			
+			// Continuously monitor the server
+			$(document).ready(function(){
+				monitor();
+			});
+		</script>
 	</head>
 
 	<body>
@@ -47,9 +58,10 @@
 					<jsp:include page="sidebar.jsp" />
 				</div><!--/span-->
 				<div class="span9">
-					<h1>404.</h1>
-					<p>Oops! The page you are trying to access could not be found.</p>
-					<p>Make sure you typed the URL correctly, or contact the administrator if you got here from a link on this site.</p>
+					<h1>Monitor</h1>
+					<div id="monitor_content">
+						Gathering data. Please wait.
+					</div>
 				</div>
 			</div>
 			<hr>

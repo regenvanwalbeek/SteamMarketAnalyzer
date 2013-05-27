@@ -20,9 +20,9 @@
 					</c:otherwise>
 				</c:choose>
 				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li id="home_link_heading"><a href="/">Home</a></li>
+					<li id="about_link_heading"><a href="#about">About</a></li>
+					<li id="contact_link_heading"><a href="#contact">Contact</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
     	</div>

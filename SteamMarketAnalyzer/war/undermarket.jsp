@@ -39,7 +39,7 @@
 		<script type="text/javascript" src="js/sma_util.js" ></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				highlight_sidebar("undermarket_link");
+				highlight_link("undermarket_link");
 			});
 		</script>
 	</head>

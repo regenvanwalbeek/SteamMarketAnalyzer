@@ -31,6 +31,7 @@ public class HTMLTest {
 		
 		TagNode rootNode = new HtmlCleaner(props).clean(resultsHTML);
 		rootNode.getEl*/
+		/*
 		List<SteamMarketListing> listings = new ArrayList<SteamMarketListing>();
 		int itemCount = SteamMarketUtility.getItemCount();
 		for (int i = 0; i < itemCount; i+=100){
@@ -40,7 +41,7 @@ public class HTMLTest {
 			}
 			System.out.println(i);
 		}
-		
+		*/
 	}
 
 	

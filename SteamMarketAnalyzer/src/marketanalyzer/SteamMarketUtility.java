@@ -23,7 +23,7 @@ public class SteamMarketUtility {
 	 * @throws IOException
 	 * @throws JSONException
 	 */
-	public static int getItemCount() throws IOException, JSONException {
+	private static int getItemCount() throws IOException, JSONException {
 		// Get the JSON for an empty query
 		String query = getQueryString("", 0, 0);
 		String queryResults = readWebPage(query);
@@ -36,6 +36,26 @@ public class SteamMarketUtility {
 		// Get the number of items available
 		return (Integer) j.get("total_count");
 		
+	}
+	
+	public static List<SteamMarketListing> getSteamMarketListings(){
+		// Scrape the steam market prices.
+		List<SteamMarketListing> listings = new ArrayList<SteamMarketListing>();
+		try {
+			int itemCount = SteamMarketUtility.getItemCount();
+			for (int i = 0; i < itemCount; i += 100) {
+				List<SteamMarketListing> newListings = SteamMarketUtility
+						.getSteamMarketListings(i, 100);
+				for (int j = 0; j < newListings.size(); j++) {
+					listings.add(newListings.get(j));
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		return listings;
 	}
 
 	/**
@@ -52,7 +72,7 @@ public class SteamMarketUtility {
 	 * @throws JSONException
 	 *             When there is an error retrieving the data
 	 */
-	public static List<SteamMarketListing> getSteamMarketListings(int start, int count)
+	private static List<SteamMarketListing> getSteamMarketListings(int start, int count)
 			throws IOException, JSONException {
 		// Get the JSON for count listings starting at start
 		String query = getQueryString("", start, count);

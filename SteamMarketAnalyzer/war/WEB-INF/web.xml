@@ -19,7 +19,23 @@
 		<url-pattern>/undermarket</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>MonitorPageServlet</servlet-name>
+		<servlet-class>page.MonitorPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MonitorPageServlet</servlet-name>
+		<url-pattern>/monitor</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>SettingsPageServlet</servlet-name>
+		<servlet-class>page.SettingsPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SettingsPageServlet</servlet-name>
+		<url-pattern>/settings</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>SteamMarketAnalyzer</servlet-name>

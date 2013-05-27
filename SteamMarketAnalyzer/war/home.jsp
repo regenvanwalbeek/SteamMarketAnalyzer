@@ -35,7 +35,8 @@
 		<script type="text/javascript" src="js/sma_util.js" ></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				highlight_sidebar("home_link");
+				highlight_link("home_link");
+				highlight_link("home_link_heading");
 			});
 		</script>
 	</head>
@@ -51,17 +52,18 @@
 					<div class="hero-unit">
 					<h1>Welcome to SMA!</h1>
 					<p>You can use this site to find cheap items on the Steam Marketplace.</p>
+					
 					<p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 				</div>
 				<div class="row-fluid">
 					<div class="span4">
-						<h2>Heading</h2>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+						<h2>Under Market Monitor</h2>
+						<p>Use the Under Market monitor to be alerted when an item falls a specified percentage under the average market listing price.</p>
 						<p><a class="btn" href="#">View details &raquo;</a></p>
 					</div><!--/span-->
 					<div class="span4">
-						<h2>Heading</h2>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+						<h2>Under Price Monitor</h2>
+						<p>Use the Under Price monitor to be alerted when an item falls under a specific price.</p>
 						<p><a class="btn" href="#">View details &raquo;</a></p>
 					</div><!--/span-->
 					<div class="span4">

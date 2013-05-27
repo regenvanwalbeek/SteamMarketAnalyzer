@@ -34,11 +34,11 @@ public class Test {
 //			}
 //		}
 
-	List<SteamMarketListing> marketListings = SteamMarketUtility.getSteamMarketListings(0, 10);
+	//List<SteamMarketListing> marketListings = SteamMarketUtility.getSteamMarketListings(0, 10);
 	
-	for (SteamMarketListing listing : marketListings){
-		System.out.println(listing.getLink());
-	}
+	//for (SteamMarketListing listing : marketListings){
+	//	System.out.println(listing.getLink());
+	//}
 	}
 	
 }

@@ -19,7 +19,7 @@ public class MarketHistoryJDO {
 	@Persistent
 	private List<Double> priceHistory;
 	
-	private static final int MAX_CAPACITY = 336;
+	private static final int MAX_CAPACITY = 168;
 	
 	public MarketHistoryJDO(String url){
 		this.url = url;

@@ -29,23 +29,7 @@ public class CrawlMarketServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		// Scrape the steam market prices.
-		List<SteamMarketListing> listings = new ArrayList<SteamMarketListing>();
-		try {
-			int itemCount = SteamMarketUtility.getItemCount();
-			for (int i = 0; i < itemCount; i += 100) {
-				List<SteamMarketListing> newListings = SteamMarketUtility
-						.getSteamMarketListings(i, 100);
-				for (int j = 0; j < newListings.size(); j++) {
-					listings.add(newListings.get(j));
-				}
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-			return;
-		} catch (JSONException e1) {
-			e1.printStackTrace();
-			return;
-		}
+		List<SteamMarketListing> listings = SteamMarketUtility.getSteamMarketListings();
 		
 		// Set the new prices in the history.
 		PersistenceManager pm = PMF.get().getPersistenceManager();
