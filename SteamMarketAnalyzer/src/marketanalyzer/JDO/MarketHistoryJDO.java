@@ -12,48 +12,54 @@ public class MarketHistoryJDO {
 
 	@PrimaryKey
 	private String url;
-	
+
 	/**
 	 * List of prices
 	 */
 	@Persistent
 	private List<Double> priceHistory;
-	
+
 	private static final int MAX_CAPACITY = 168;
-	
-	public MarketHistoryJDO(String url){
+
+	/**
+	 * Sum of the prices in the history - used to save read-write ops when
+	 * calculating averages.
+	 */
+	@Persistent
+	private Double priceSum;
+
+	public MarketHistoryJDO(String url) {
 		this.url = url;
 		priceHistory = new ArrayList<Double>();
+		priceSum = 0.0;
 	}
-	
-	public String getUrl(){
+
+	public String getUrl() {
 		return this.url;
 	}
-	
-	public List<Double> getPriceHistory(){
+
+	public List<Double> getPriceHistory() {
 		return this.priceHistory;
 	}
-	
-	public void addPrice(double price){
-		if (priceHistory.size() == MAX_CAPACITY){
+
+	public void addPrice(double price) {
+		// Remove any excess prices.
+		while (priceHistory.size() >= MAX_CAPACITY) {
 			priceHistory.remove(0);
+			priceSum -= price;
 		}
+
+		// Add the new price
 		priceHistory.add(price);
+		priceSum += price;
 	}
-	
-	public double averagePrice(){
-		double sum = 0;
-		for (Double d : priceHistory){
-			sum += d;
-		}
-		
-		double average = sum / priceHistory.size();
-		return average;
+
+	public double averagePrice() {
+		return priceSum / priceHistory.size();
 	}
-	
-	public double mostRecent(){
+
+	public double mostRecent() {
 		return priceHistory.get(priceHistory.size() - 1);
 	}
-	
 
 }
